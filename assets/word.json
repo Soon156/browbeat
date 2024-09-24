@@ -1,0 +1,186 @@
+{
+  "categories": {
+    "easy": [
+      {
+        "word": "happy",
+        "definition": "Feeling good or pleased."
+      },
+      {
+        "word": "quick",
+        "definition": "Moving fast or finishing something in little time."
+      },
+      {
+        "word": "house",
+        "definition": "A building where people live."
+      },
+      {
+        "word": "friend",
+        "definition": "Someone you know well and like a lot."
+      },
+      {
+        "word": "calm",
+        "definition": "Feeling relaxed, not upset or worried."
+      },
+      {
+        "word": "brave",
+        "definition": "Ready to face danger or pain without fear."
+      },
+      {
+        "word": "trust",
+        "definition": "Believing someone or something is reliable."
+      },
+      {
+        "word": "shine",
+        "definition": "To give off light or be bright."
+      },
+      {
+        "word": "laugh",
+        "definition": "Making sounds when something is funny."
+      },
+      {
+        "word": "smart",
+        "definition": "Being quick to understand or solve things."
+      },
+      {
+        "word": "peace",
+        "definition": "A quiet and calm state, without trouble."
+      },
+      {
+        "word": "green",
+        "definition": "A color like grass or leaves, often connected to nature."
+      },
+      {
+        "word": "kind",
+        "definition": "Being friendly and caring to others."
+      },
+      {
+        "word": "light",
+        "definition": "What helps you see things; brightness."
+      },
+      {
+        "word": "clear",
+        "definition": "Easy to understand or see."
+      },
+      {
+        "word": "young",
+        "definition": "Not very old; having lived for a short time."
+      },
+      {
+        "word": "sweet",
+        "definition": "Tasting like sugar; very nice or kind."
+      },
+      {
+        "word": "strong",
+        "definition": "Having lots of power or muscle."
+      },
+      {
+        "word": "lucky",
+        "definition": "Having good things happen by chance."
+      },
+      {
+        "word": "honest",
+        "definition": "Always telling the truth."
+      },
+      {
+        "word": "loyal",
+        "definition": "Always supporting or standing by someone."
+      },
+      {
+        "word": "smile",
+        "definition": "A happy expression with your mouth turned up."
+      },
+      {
+        "word": "brisk",
+        "definition": "Moving quickly and full of energy."
+      },
+      {
+        "word": "polite",
+        "definition": "Being respectful and nice to others."
+      }
+    ],
+    "normal": [
+      {
+        "word": "debate",
+        "definition": "A formal discussion on a particular topic, where opposing arguments are put forward."
+      },
+      {
+        "word": "grace",
+        "definition": "Simple elegance or refinement of movement."
+      },
+      {
+        "word": "humble",
+        "definition": "Having or showing a modest or low estimate of one's importance."
+      },
+      {
+        "word": "glisten",
+        "definition": "To shine with a sparkling light."
+      },
+      {
+        "word": "ponder",
+        "definition": "To think about something carefully, especially before making a decision."
+      },
+      {
+        "word": "vivid",
+        "definition": "Producing powerful feelings or strong, clear images in the mind."
+      },
+      {
+        "word": "revere",
+        "definition": "To feel deep respect or admiration for something."
+      },
+      {
+        "word": "fragile",
+        "definition": "Easily broken or damaged."
+      },
+      {
+        "word": "steady",
+        "definition": "Firmly fixed, constant, regular, or balanced."
+      },
+      {
+        "word": "desire",
+        "definition": "A strong feeling of wanting to have something or wishing for something to happen."
+      }
+    ],
+    "hard": [
+      {
+        "word": "ephemeral",
+        "definition": "Lasting for a very short time."
+      },
+      {
+        "word": "quintessential",
+        "definition": "Representing the most perfect or typical example of a quality or class."
+      },
+      {
+        "word": "cogent",
+        "definition": "Clear, logical, and convincing."
+      },
+      {
+        "word": "recalcitrant",
+        "definition": "Having an obstinately uncooperative attitude toward authority or discipline."
+      },
+      {
+        "word": "insidious",
+        "definition": "Proceeding in a gradual, subtle way, but with harmful effects."
+      },
+      {
+        "word": "equanimity",
+        "definition": "Mental calmness, composure, and evenness of temper, especially in a difficult situation."
+      },
+      {
+        "word": "obfuscate",
+        "definition": "To deliberately make something unclear or difficult to understand."
+      },
+      {
+        "word": "tenacious",
+        "definition": "Tending to keep a firm hold of something; persistent or determined."
+      },
+      {
+        "word": "obsequious",
+        "definition": "Excessively eager to please or obey."
+      },
+      {
+        "word": "pernicious",
+        "definition": "Having a harmful effect, especially in a gradual or subtle way."
+      }
+    ]
+  }
+}
