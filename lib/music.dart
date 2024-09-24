@@ -5,16 +5,16 @@ import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:logging/logging.dart';
 
 class AudioController {
-  late final AudioSource musicSource;
+  late AudioSource musicSource;
   SoLoud soloud = SoLoud.instance;
   late SoundHandle musicHandle;
-  final Duration length = Duration(seconds: 1);
+  Duration length = Duration(seconds: 1);
   late double volume;
   late bool isPlaying;
   late Icon musicIcon;
 
-  final stopMusicIcon = Icon(Icons.music_off_rounded);
-  final playMusicIcon = Icon(Icons.music_note_rounded);
+  Icon stopMusicIcon = Icon(Icons.music_off_rounded);
+  Icon playMusicIcon = Icon(Icons.music_note_rounded);
 
   Future<void> initialize() async {
     audioLog.info("Initialize Audio Controller....");
@@ -55,6 +55,10 @@ class AudioController {
     ioController.writeData('playMusic', 'bool', isPlaying);
     audioLog.config('Audio state switch to: $isPlaying');
     return musicIcon;
+  }
+
+  void setMusicVolume() {
+    soloud.setVolume(musicHandle, volume);
   }
 
   void startMusic() {

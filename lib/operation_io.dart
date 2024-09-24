@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 
 class IOController {
-  late final SharedPreferencesWithCache prefsWithCache;
+  late SharedPreferencesWithCache prefsWithCache;
   Future<void> initialize() async {
     ioLog.info("Initialize IO Controller....");
     prefsWithCache = await SharedPreferencesWithCache.create(
@@ -60,6 +60,12 @@ class IOController {
     ioLog.info('Disposing cache..');
     await prefsWithCache.clear();
   }
+
+  Future<void> resetData() async {
+    for (var dataId in availableList) {
+      removeData(dataId);
+    }
+  }
 }
 
 final ioLog = Logger("IOController");
@@ -70,7 +76,7 @@ const availableList = <String>{
   'difficulty',
   'progression',
   'userWordList',
-  'wordIndex'
+  'wordIndex',
 };
 
 final ioController = IOController();

@@ -1,18 +1,12 @@
 import 'package:beatbrows/music.dart';
 import 'package:beatbrows/operation_io.dart';
+import 'package:beatbrows/setting.dart';
 import 'package:beatbrows/state.dart';
 import 'package:beatbrows/word.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'playground.dart';
-
-const difficultyColor = {
-  "easy": Color.fromARGB(255, 33, 163, 105),
-  "normal": Color.fromARGB(255, 226, 229, 51),
-  "hard": Color.fromARGB(255, 223, 28, 44),
-  "unselected": Color.fromARGB(255, 130, 122, 122),
-};
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -90,36 +84,26 @@ class MainMenu extends StatelessWidget {
               icon: audioController.musicIcon),
           IconButton(
               onPressed: () => {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        action: SnackBarAction(
-                          label: 'Ok',
-                          onPressed: () {},
-                        ),
-                        content: Center(child: const Text('Work in Progress!')),
-                        duration: const Duration(milliseconds: 1500),
-                        width: 280.0,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0,
-                        ),
-                        behavior: SnackBarBehavior.floating,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SettingPage(),
                       ),
                     )
                   },
               icon: Icon(Icons.settings)),
         ],
       ),
-      body: Container(
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            DifficultyCard(appState: appState),
-            Expanded(flex: 1, child: StartCard()),
-          ],
+      body: SafeArea(
+        child: Container(
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              DifficultyCard(appState: appState),
+              Flexible(flex: 1, fit: FlexFit.tight, child: StartCard()),
+            ],
+          ),
         ),
       ),
     );
@@ -136,7 +120,7 @@ class DifficultyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Flexible(
       flex: 3,
       child: LayoutBuilder(
           builder: (BuildContext ctx, BoxConstraints constraints) {
@@ -192,6 +176,7 @@ class DifficultySelection extends StatelessWidget {
         color: appColorScheme.getColorSheme("secondary"),
       ),
       constraints: BoxConstraints(
+          minHeight: constraints.maxHeight * 0.5,
           minWidth: constraints.maxWidth * 0.7,
           maxWidth: constraints.maxWidth * 0.7),
       child: content,
@@ -218,9 +203,9 @@ class Difficulty extends StatelessWidget {
     );
     Color? color;
     if (wordController.difficulty == text.toLowerCase()) {
-      color = difficultyColor[difficulty];
+      color = appColorScheme.getColorSheme(difficulty);
     } else {
-      color = difficultyColor["unselected"];
+      color = appColorScheme.getColorSheme("unselected");
     }
 
     return Card(

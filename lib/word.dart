@@ -6,25 +6,12 @@ import 'package:logging/logging.dart';
 
 class WordController {
   late String wordList;
-  Map<String, dynamic> word = {
-    'easy': {
-      'word': '',
-      'hint': '',
-      'description': '',
-    },
-    'normal': {
-      'word': '',
-      'hint': '',
-      'description': '',
-    },
-    'hard': {
-      'word': '',
-      'hint': '',
-      'description': '',
-    },
-  };
+  late Map<String, dynamic> progressionWordList;
+  late String defaultWordList;
   late String difficulty;
   late int wordIndex;
+  late int wordCounter;
+  late int wordCounterAll;
 
   Future<void> initialize() async {
     wordLog.info("Initialize Word Controller....");
@@ -42,28 +29,35 @@ class WordController {
 
     if (tempWord.isEmpty) {
       wordLog.info("Init game: $tempWord");
-      word = {
+      progressionWordList = {
         'easy': {
           'word': '',
           'hint': '',
+          'hintWord': '',
           'description': '',
         },
         'normal': {
           'word': '',
           'hint': '',
+          'hintWord': '',
           'description': '',
         },
         'hard': {
           'word': '',
           'hint': '',
+          'hintWord': '',
           'description': '',
         },
       };
     } else {
       wordLog.info("Last state found: $tempWord");
-      word = jsonDecode(tempWord);
+      progressionWordList = jsonDecode(tempWord);
     }
 
+    defaultWordList = await rootBundle.loadString('assets/word.json');
+
+    wordCounterAll =
+        jsonDecode(defaultWordList)["categories"][difficulty].length;
     // Retrieve progression
     final userWordList =
         (await ioController.readData('userWordList', 'string') as String?);
@@ -71,21 +65,24 @@ class WordController {
       wordLog.config('Last Progression: $userWordList');
       wordList = userWordList;
     } else {
-      final String jsonString = await rootBundle.loadString('assets/word.json');
-      var data = jsonDecode(jsonString);
-      wordList = jsonEncode(data["categories"]);
       wordLog.config('New game detected');
+      wordList = jsonEncode(jsonDecode(defaultWordList)["categories"]);
+      wordCounter = wordCounterAll;
     }
   }
 
   Map<String, dynamic>? getWordData() {
-    final wordData = word[difficulty];
+    final wordData = progressionWordList[difficulty];
+    wordCounterAll =
+        jsonDecode(defaultWordList)["categories"][difficulty].length;
+    wordCounter = jsonDecode(wordList)[difficulty].length;
+
     if (wordData!['word']!.isEmpty) {
       wordLog.info("'Game difficulty' change or 'New Stage' detected!");
       var random = Random();
       var wordArray = jsonDecode(wordList)[difficulty];
       if (wordArray.isNotEmpty) {
-        // Assign hint 
+        // Assign hint
         wordIndex = random.nextInt(wordArray.length);
         ioController.writeData('wordIndex', 'int', wordIndex);
         var wordToHint = wordArray[wordIndex]["word"];
@@ -101,25 +98,28 @@ class WordController {
               charArray[i] = "_";
             }
           }
-          word[difficulty]!['hint'] = charArray.join("");
-
           // Assign word
-          word[difficulty]!['word'] = wordToHint;
+          progressionWordList[difficulty]!['hint'] = charArray.join("");
+          progressionWordList[difficulty]!['hintWord'] =
+              generateCharacterList(charArray, wordToHint.split(''));
+          progressionWordList[difficulty]!['word'] = wordToHint;
 
           // Assign description
-          word[difficulty]!['description'] =
+          progressionWordList[difficulty]!['description'] =
               wordArray[wordIndex]["definition"] ?? "";
         }
       } else {
         wordLog.warning("Difficulty beat/wrong word file!");
-        word[difficulty]!['word'] = "";
-        word[difficulty]!['description'] = "";
-        word[difficulty]!['hint'] = "";
+        progressionWordList[difficulty]!['word'] = "";
+        progressionWordList[difficulty]!['description'] = "";
+        progressionWordList[difficulty]!['hint'] = "";
+        progressionWordList[difficulty]!['hintWord'] = "";
       }
     }
-    ioController.writeData('progression', 'string', jsonEncode(word));
-    wordLog.config("New state: $word");
-    return word[difficulty];
+    ioController.writeData(
+        'progression', 'string', jsonEncode(progressionWordList));
+    wordLog.config("New state: $progressionWordList");
+    return progressionWordList[difficulty];
   }
 
   void removeWord() {
@@ -131,7 +131,7 @@ class WordController {
         wordArray[difficulty] = newWordArray;
         wordList = jsonEncode(wordArray);
         ioController.writeData('userWordList', 'string', wordList);
-        word[difficulty]!['word'] = "";
+        progressionWordList[difficulty]!['word'] = "";
         wordLog.config("New progession: $wordList");
       } else {
         wordLog.shout(
@@ -160,6 +160,28 @@ List<T> shuffleArray<T>(List<T> array) {
     array[j] = temp;
   }
   return array;
+}
+
+String generateCharacterList(List hintWord, List originalWord) {
+  List<String> hintChars = [];
+  Random random = Random();
+  var hintLength = hintWord.length;
+
+  for (int i = 0; i < hintLength; i++) {
+    if (hintWord[i] == '_') {
+      hintChars.add(originalWord[i]);
+    }
+  }
+
+  // Generate random characters from 'a' to 'z'
+  while (hintChars.length < hintLength) {
+    String randomChar = String.fromCharCode(random.nextInt(26) + 97);
+    if (!hintChars.contains(randomChar)) {
+      hintChars.add(randomChar);
+    }
+  }
+
+  return hintChars.join();
 }
 
 final wordLog = Logger("Word Controller");

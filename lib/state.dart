@@ -23,6 +23,10 @@ class AppColorScheme {
     "secondary": Color.fromRGBO(237, 232, 220, 1),
     "third": Color.fromRGBO(165, 182, 141, 1),
     "fourth": Color.fromRGBO(193, 207, 161, 1),
+    "easy": Color.fromARGB(255, 33, 163, 105),
+    "normal": Color.fromARGB(255, 226, 229, 51),
+    "hard": Color.fromARGB(255, 223, 28, 44),
+    "unselected": Color.fromARGB(255, 130, 122, 122),
   };
 
   Color? getColorSheme(String type) {
