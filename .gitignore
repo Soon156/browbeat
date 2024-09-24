@@ -12,4 +12,5 @@
 /.metadata
 *.iml
 *.lock
+/.DS_Store
 
