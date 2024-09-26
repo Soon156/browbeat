@@ -21,8 +21,8 @@ class _PlayGroundState extends State<PlayGround> {
   Widget build(BuildContext context) {
     print(wordData['word']);
     final TextEditingController textFieldController = TextEditingController();
-    final newData = wordData['hint'].split('');
-    var hintWord = wordData['hintWord'].split('');
+    final newData = wordData['hint'].toString().toUpperCase().split('');
+    var hintWord = wordData['hintWord'].toString().toUpperCase().split('');
 
     final theme = Theme.of(context);
     final style = theme.textTheme.displayMedium!.copyWith(
@@ -34,7 +34,7 @@ class _PlayGroundState extends State<PlayGround> {
     Color? cardColor;
     for (int i = 0; i < newData.length; i++) {
       if (inputData.length < newData.length) {
-        inputData.add(WordState(newData[i].toString(), "", ""));
+        inputData.add(WordState(newData[i], "", ""));
       }
       if (inputData[i].character == "_") {
         cardColor = appColorScheme.getColorSheme("third");
@@ -206,9 +206,8 @@ class _PlayGroundState extends State<PlayGround> {
                   for (var element in inputData) {
                     inputText.add(element.character);
                   }
-                  if (textFieldController.text.toLowerCase().trim() ==
-                          wordData['word'] ||
-                      inputText.join('') == wordData['word']) {
+                  if (inputText.join('') ==
+                      wordData['word'].toString().toUpperCase()) {
                     correctness = "correct";
                   }
 
