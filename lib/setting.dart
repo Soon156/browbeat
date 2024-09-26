@@ -1,7 +1,6 @@
 import 'package:beatbrows/music.dart';
 import 'package:beatbrows/operation_io.dart';
 import 'package:beatbrows/state.dart';
-import 'package:beatbrows/word.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,18 +41,16 @@ class _SettingPageState extends State<SettingPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Flexible(
-                            fit: FlexFit.tight,
                             flex: 1,
                             child: Center(
                               child: Text(
-                                "Music:  ${(audioController.bgmVolume * 100).round().toString()}",
+                                "Music: ${(audioController.bgmVolume * 100).round().toString()}",
                                 style: style,
                               ),
                             ),
                           ),
                           Flexible(
                             flex: 3,
-                            fit: FlexFit.tight,
                             child: Slider(
                               label: (audioController.bgmVolume * 100)
                                   .round()
@@ -124,13 +121,9 @@ class _SettingPageState extends State<SettingPage> {
                             TextButton(
                               onPressed: () async {
                                 Navigator.pop(context);
-                                audioController.dispose();
-                                await ioController.resetData();
-                                await ioController.initialize();
-                                await audioController.initialize();
-                                await wordController.initialize();
+                                await appState.refreshState();
                                 setState(() {
-                                  appState.refreshState();
+                                  ioLog.info('Reset completed');
                                 });
                               },
                               child: const Text('OK'),
