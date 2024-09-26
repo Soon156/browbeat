@@ -20,7 +20,6 @@ class _PlayGroundState extends State<PlayGround> {
   @override
   Widget build(BuildContext context) {
     print(wordData['word']);
-    final TextEditingController textFieldController = TextEditingController();
     final newData = wordData['hint'].toString().toUpperCase().split('');
     var hintWord = wordData['hintWord'].toString().toUpperCase().split('');
 

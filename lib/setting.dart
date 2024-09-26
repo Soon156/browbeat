@@ -16,8 +16,8 @@ class _SettingPageState extends State<SettingPage> {
     var appState = context.watch<AppState>();
     final theme = Theme.of(context);
     final style = theme.textTheme.displayMedium!.copyWith(
-      color: theme.colorScheme.onSurface,
-      fontSize: 20,
+      color: theme.colorScheme.secondary,
+      fontSize: 15,
     );
     return Scaffold(
       appBar: AppBar(
@@ -82,7 +82,7 @@ class _SettingPageState extends State<SettingPage> {
                             flex: 1,
                             child: Center(
                               child: Text(
-                                "Sound Effect: ${(audioController.clickVolume * 100).round().toString()}",
+                                "Effect: ${(audioController.clickVolume * 100).round().toString()}",
                                 style: style,
                               ),
                             ),
