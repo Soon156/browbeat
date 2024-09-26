@@ -1,4 +1,6 @@
+import 'dart:math';
 import 'package:beatbrows/music.dart';
+import 'package:beatbrows/operation_io.dart';
 import 'package:beatbrows/state.dart';
 import 'package:beatbrows/word.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,8 @@ class PlayGround extends StatefulWidget {
 }
 
 class _PlayGroundState extends State<PlayGround> {
+  late LiveTimestamp liveTimestamp;
+  DateTime timsStamp = DateTime.now();
   var state = "";
   bool clickable = true;
   var wordData = wordController.getWordData()!;
@@ -16,12 +20,48 @@ class _PlayGroundState extends State<PlayGround> {
   List<int> inputIndex = [];
   List<int> hintIndex = [];
   List<Color?> selectedHint = [];
+  List newData = [];
+  List hintWord = [];
+
+  @override
+  void initState() {
+    liveTimestamp = LiveTimestamp();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    liveTimestamp.dispose();
+    super.dispose();
+  }
+
+  Map<String, String> getHint() {
+    var originalWord = wordData['word'];
+    var charToHint = [];
+    int randomIndex = -1;
+    for (int i = 0; i < newData.length; i++) {
+      if (inputData[i].character == "_") {
+        charToHint.add([originalWord[i], i.toString()]);
+      }
+    }
+    if (charToHint.isNotEmpty) {
+      Random random = Random();
+      randomIndex = random.nextInt(charToHint.length);
+    }
+    if (randomIndex != -1) {
+      return {
+        "hintChar": charToHint[randomIndex][0],
+        "randomIndex": charToHint[randomIndex][1]
+      };
+    } else {
+      return {};
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    print(wordData['word']);
-    final newData = wordData['hint'].toString().toUpperCase().split('');
-    var hintWord = wordData['hintWord'].toString().toUpperCase().split('');
+    newData = wordData['hint'].toString().toUpperCase().split('');
+    hintWord = wordData['hintWord'].toString().toUpperCase().split('');
 
     final theme = Theme.of(context);
     final style = theme.textTheme.displayMedium!.copyWith(
@@ -164,14 +204,104 @@ class _PlayGroundState extends State<PlayGround> {
 
     mainPage = Center(
       child: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.fromLTRB(30, 0, 30, 10),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              "${wordController.wordCounter.toString()}/${wordController.wordCounterAll.toString()}",
+            Row(
+              children: [
+                Text(
+                  "${wordController.wordCounter.toString()}/${wordController.wordCounterAll.toString()}",
+                ),
+                Spacer(),
+                Row(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          var hintDetail = getHint();
+                          setState(() {
+                            if (hintDetail.isNotEmpty) {
+                              clickable = false;
+                              if (wordController.hintCounter > 0) {
+                                wordController.hintCounter -= 1;
+                                ioController.writeData('hintCounter', 'int',
+                                    wordController.hintCounter);
+                                var hintChar = hintDetail["hintChar"]!;
+                                var randomIndex =
+                                    int.parse(hintDetail["randomIndex"]!);
+                                inputData[randomIndex].character =
+                                    hintChar.toUpperCase();
+                              } else {
+                                showDialog<String>(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        AlertDialog(
+                                          title: Text('Hint Chance Exhaust'),
+                                          content: StreamBuilder(
+                                              stream:
+                                                  liveTimestamp.timestampStream,
+                                              builder: (context, setState) {
+                                                if (setState.connectionState ==
+                                                    ConnectionState.waiting) {
+                                                  return CircularProgressIndicator();
+                                                } else if (setState.hasError) {
+                                                  return Text(
+                                                      'Error: ${setState.error}');
+                                                } else if (!setState.hasData) {
+                                                  return Text(
+                                                      'No data available');
+                                                } else {
+                                                  var now = setState.data!;
+                                                  var remainingTime =
+                                                      ((wordController.lastHintTimeStamp +
+                                                                  (1000 *
+                                                                      60 *
+                                                                      3)) -
+                                                              now) /
+                                                          1000;
+                                                  return Text(
+                                                      "Next hint will be refresh in: ${remainingTime.round()} sec");
+                                                }
+                                              }),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        ));
+                              }
+                              clickable = true;
+                            }
+                          });
+                        },
+                        icon: Icon(Icons.lightbulb)),
+                    StreamBuilder<int>(
+                        stream: liveTimestamp.timestampStream,
+                        initialData: DateTime.now().millisecondsSinceEpoch,
+                        builder: (context, snapshot) {
+                          var now = snapshot.data!;
+                          var difference =
+                              now - wordController.lastHintTimeStamp;
+                          if (difference / 1000 / 60 > 3 &&
+                              wordController.hintCounter < 3) {
+                            wordController.lastHintTimeStamp = now;
+                            wordController.hintCounter += 1;
+                            ioController.writeData('hintCounter', 'int',
+                                wordController.hintCounter);
+                            ioController.writeData(
+                                'lastHintTimeStamp', 'int', now);
+                          }
+                          return Text(
+                              "${wordController.hintCounter.toString()}/3");
+                        })
+                  ],
+                ),
+              ],
             ),
+            Spacer(),
             Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
                   height: 60,
@@ -193,64 +323,50 @@ class _PlayGroundState extends State<PlayGround> {
                     children: hintCard,
                   ),
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                      // Check word corretness
+                      var inputText = [];
+                      var correctness = "error";
+                      for (var element in inputData) {
+                        inputText.add(element.character);
+                      }
+                      if (inputText.join('') ==
+                          wordData['word'].toString().toUpperCase()) {
+                        correctness = "correct";
+                      }
+
+                      // Build response
+                      if (correctness == "error") {
+                        print(inputText.join(''));
+                        // Show Dialog
+                        showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                                  title: const Text('Incorrect'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: const Text('Retry'),
+                                    ),
+                                  ],
+                                ));
+                      } else {
+                        wordController.removeWord();
+                        wordData = wordController.getWordData()!;
+                        setState(() {
+                          state = "";
+                          inputData = [];
+                          inputIndex = [];
+                          hintIndex = [];
+                          selectedHint = [];
+                        });
+                      }
+                    },
+                    child: Text("Check Word")),
               ],
             ),
-
-            // TextField(controller: textFieldController,),
-            ElevatedButton(
-                onPressed: () {
-                  // Check word corretness
-                  var inputText = [];
-                  var correctness = "error";
-                  for (var element in inputData) {
-                    inputText.add(element.character);
-                  }
-                  if (inputText.join('') ==
-                      wordData['word'].toString().toUpperCase()) {
-                    correctness = "correct";
-                  }
-
-                  // Build response
-                  Widget dialog;
-                  if (correctness == "error") {
-                    dialog = AlertDialog(
-                      title: const Text('Incorrect'),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Retry'),
-                        ),
-                      ],
-                    );
-                  } else {
-                    dialog = AlertDialog(
-                      title: const Text('Correct'),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            wordController.removeWord();
-                            wordData = wordController.getWordData()!;
-                            setState(() {
-                              state = "";
-                              inputData = [];
-                              inputIndex = [];
-                              hintIndex = [];
-                              selectedHint = [];
-                            });
-                          },
-                          child: const Text('Continue'),
-                        )
-                      ],
-                    );
-                  }
-
-                  // Show Dialog
-                  showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => dialog);
-                },
-                child: Text("Check Word")),
+            Spacer(),
           ],
         ),
       ),
@@ -266,6 +382,14 @@ class _PlayGroundState extends State<PlayGround> {
         appBar: AppBar(
           title: Text("BeatBrows"),
         ),
-        body: mainPage);
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth <= 350) {
+              return Center(child: Text("Please rotate your phone for better experience!"));
+            } else {
+              return mainPage;
+            }
+          },
+        ));
   }
 }
