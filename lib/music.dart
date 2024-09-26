@@ -5,11 +5,14 @@ import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:logging/logging.dart';
 
 class AudioController {
-  late AudioSource musicSource;
-  SoLoud soloud = SoLoud.instance;
+  late AudioSource bgmSource;
+  late AudioSource clickSource;
+  SoLoud bgmInstance = SoLoud.instance;
+  SoLoud clickInstance = SoLoud.instance;
   late SoundHandle musicHandle;
   Duration length = Duration(seconds: 1);
-  late double volume;
+  late double bgmVolume;
+  late double clickVolume;
   late bool isPlaying;
   late Icon musicIcon;
 
@@ -18,28 +21,38 @@ class AudioController {
 
   Future<void> initialize() async {
     audioLog.info("Initialize Audio Controller....");
-    volume =
+    bgmVolume =
         (await ioController.readData('musicVolume', 'double') as double?) ?? 1;
+    clickVolume =
+        (await ioController.readData('clickVolume', 'double') as double?) ??
+            0.7;
     isPlaying =
         (await ioController.readData('playMusic', 'bool') as bool?) ?? true;
-    await soloud.init();
-    await soloud
-        .loadAsset('assets/MainMenu.mp3', mode: LoadMode.disk)
+    await bgmInstance.init();
+    await bgmInstance
+        .loadAsset('assets/backgound_music.mp3', mode: LoadMode.disk)
         .then((source) async {
-      musicSource = source;
+      bgmSource = source;
     });
-    musicHandle = await soloud.play(musicSource, volume: volume, looping: true);
+    await clickInstance
+        .loadAsset('assets/pop_sound.mp3', mode: LoadMode.memory)
+        .then((source) async {
+      clickSource = source;
+    });
+    musicHandle =
+        await bgmInstance.play(bgmSource, volume: bgmVolume, looping: true);
     if (isPlaying) {
       musicIcon = playMusicIcon;
     } else {
       musicIcon = stopMusicIcon;
-      soloud.setPause(musicHandle, true);
+      bgmInstance.setPause(musicHandle, true);
     }
   }
 
   void dispose() {
     audioLog.info('Disposing soloud..');
-    soloud.deinit();
+    bgmInstance.deinit();
+    clickInstance.deinit();
   }
 
   Icon switchState() {
@@ -58,20 +71,24 @@ class AudioController {
   }
 
   void setMusicVolume() {
-    soloud.setVolume(musicHandle, volume);
+    bgmInstance.setVolume(musicHandle, bgmVolume);
+  }
+
+  void playClickSound() {
+    clickInstance.play(clickSource, volume: clickVolume);
   }
 
   void startMusic() {
-    soloud.fadeVolume(musicHandle, volume, length);
-    soloud.setPause(musicHandle, false);
+    bgmInstance.fadeVolume(musicHandle, bgmVolume, length);
+    bgmInstance.setPause(musicHandle, false);
   }
 
   void fadeOutMusic() {
     if (musicHandle == null) {
       return;
     }
-    soloud.fadeVolume(musicHandle, 0, length);
-    soloud.schedulePause(musicHandle, length);
+    bgmInstance.fadeVolume(musicHandle, 0, length);
+    bgmInstance.schedulePause(musicHandle, length);
   }
 
   Future<void> playEffect(String type) async {

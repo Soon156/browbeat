@@ -3,6 +3,7 @@ import 'package:beatbrows/operation_io.dart';
 import 'package:beatbrows/state.dart';
 import 'package:beatbrows/word.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingPage extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<AppState>();
     final theme = Theme.of(context);
     final style = theme.textTheme.displayMedium!.copyWith(
       color: theme.colorScheme.onSurface,
@@ -33,30 +35,77 @@ class _SettingPageState extends State<SettingPage> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   padding: EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  child: Column(
                     children: [
-                      Flexible(
-                        flex: 1,
-                        child: Text(
-                          "Volume:  ${(audioController.volume * 100).round().toString()}",
-                          style: style,
-                        ),
+                      // BGM
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Flexible(
+                            fit: FlexFit.tight,
+                            flex: 1,
+                            child: Center(
+                              child: Text(
+                                "Music:  ${(audioController.bgmVolume * 100).round().toString()}",
+                                style: style,
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            flex: 3,
+                            fit: FlexFit.tight,
+                            child: Slider(
+                              label: (audioController.bgmVolume * 100)
+                                  .round()
+                                  .toString(),
+                              value: audioController.bgmVolume,
+                              onChanged: (double value) => {
+                                setState(() {
+                                  audioController.bgmVolume = value;
+                                })
+                              },
+                              onChangeEnd: (double value) {
+                                audioController.setMusicVolume();
+
+                                ioController.writeData(
+                                    'musicVolume', 'double', value);
+                              },
+                            ),
+                          ),
+                        ],
                       ),
-                      Flexible(
-                        flex: 1,
-                        child: Slider(
-                          label:
-                              (audioController.volume * 100).round().toString(),
-                          value: audioController.volume,
-                          onChanged: (double value) => {
-                            setState(() {
-                              audioController.volume = value;
-                            })
-                          },
-                          onChangeEnd: (double value) =>
-                              {audioController.setMusicVolume()},
-                        ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Flexible(
+                            flex: 1,
+                            child: Center(
+                              child: Text(
+                                "Sound Effect: ${(audioController.clickVolume * 100).round().toString()}",
+                                style: style,
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            flex: 3,
+                            child: Slider(
+                              label: (audioController.clickVolume * 100)
+                                  .round()
+                                  .toString(),
+                              value: audioController.clickVolume,
+                              onChanged: (double value) => {
+                                setState(() {
+                                  audioController.clickVolume = value;
+                                })
+                              },
+                              onChangeEnd: (double value) => {
+                                ioController.writeData(
+                                    'clickVolume', 'double', value)
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   )),
@@ -73,13 +122,16 @@ class _SettingPageState extends State<SettingPage> {
                               child: const Text('Cancel'),
                             ),
                             TextButton(
-                              onPressed: () async => {
-                                Navigator.pop(context),
-                                audioController.dispose(),
-                                await ioController.resetData(),
-                                await ioController.initialize(),
-                                await audioController.initialize(),
-                                await wordController.initialize(),
+                              onPressed: () async {
+                                Navigator.pop(context);
+                                audioController.dispose();
+                                await ioController.resetData();
+                                await ioController.initialize();
+                                await audioController.initialize();
+                                await wordController.initialize();
+                                setState(() {
+                                  appState.refreshState();
+                                });
                               },
                               child: const Text('OK'),
                             ),

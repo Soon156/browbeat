@@ -147,7 +147,7 @@ class WordController {
 int getRandomNumber(int totalWords) {
   int minCount = (totalWords / 4).ceil();
   int maxCount = (totalWords / 2).ceil();
-  minCount = max(1, minCount);
+  minCount = max(2, minCount);
   return Random().nextInt(maxCount - minCount + 1) + minCount;
 }
 
@@ -165,9 +165,9 @@ List<T> shuffleArray<T>(List<T> array) {
 String generateCharacterList(List hintWord, List originalWord) {
   List<String> hintChars = [];
   Random random = Random();
-  var hintLength = hintWord.length;
+  var hintLength = max(hintWord.length, 8);
 
-  for (int i = 0; i < hintLength; i++) {
+  for (int i = 0; i < hintWord.length; i++) {
     if (hintWord[i] == '_') {
       hintChars.add(originalWord[i]);
     }
@@ -181,7 +181,8 @@ String generateCharacterList(List hintWord, List originalWord) {
     }
   }
 
-  return hintChars.join();
+
+  return shuffleArray(hintChars).join();
 }
 
 final wordLog = Logger("Word Controller");

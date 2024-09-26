@@ -24,7 +24,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/word.json
-    - assets/MainMenu.mp3
+    - assets/backgound_music.mp3
+    - assets/pop_sound.mp3
 
 flutter_launcher_icons:
   android: "lancher_icon"

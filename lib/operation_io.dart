@@ -72,6 +72,7 @@ final ioLog = Logger("IOController");
 
 const availableList = <String>{
   'musicVolume',
+  'clickVolume',
   'playMusic',
   'difficulty',
   'progression',

@@ -209,6 +209,7 @@ class Difficulty extends StatelessWidget {
     }
 
     return Card(
+      clipBehavior: Clip.hardEdge,
       color: color,
       child: InkWell(
         onTap: () {

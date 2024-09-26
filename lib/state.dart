@@ -4,8 +4,13 @@ import 'package:beatbrows/word.dart';
 import 'package:flutter/material.dart';
 
 class AppState extends ChangeNotifier {
+
   void switchMusic() {
     audioController.switchState();
+    notifyListeners();
+  }
+
+  void refreshState() {
     notifyListeners();
   }
 
@@ -36,3 +41,11 @@ class AppColorScheme {
 }
 
 var appColorScheme = AppColorScheme();
+
+class WordState {
+  String character;
+  String hintIndex;
+  String inputIndex;
+
+  WordState(this.character, this.hintIndex, this.inputIndex);
+}

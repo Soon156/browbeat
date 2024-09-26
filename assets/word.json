@@ -2,184 +2,996 @@
   "categories": {
     "easy": [
       {
-        "word": "happy",
-        "definition": "Feeling good or pleased."
+        "word": "apple",
+        "definition": "A round fruit with red or green skin."
       },
       {
-        "word": "quick",
-        "definition": "Moving fast or finishing something in little time."
+        "word": "ball",
+        "definition": "A round object used in many sports and games."
       },
       {
-        "word": "house",
-        "definition": "A building where people live."
+        "word": "cat",
+        "definition": "A small furry pet animal that meows."
       },
       {
-        "word": "friend",
-        "definition": "Someone you know well and like a lot."
+        "word": "dog",
+        "definition": "A friendly pet animal that barks."
       },
       {
-        "word": "calm",
-        "definition": "Feeling relaxed, not upset or worried."
+        "word": "egg",
+        "definition": "An oval food item from birds, often chicken."
       },
       {
-        "word": "brave",
-        "definition": "Ready to face danger or pain without fear."
+        "word": "fish",
+        "definition": "An animal that lives and swims in water."
       },
       {
-        "word": "trust",
-        "definition": "Believing someone or something is reliable."
+        "word": "grass",
+        "definition": "Green plants that cover the ground outside."
       },
       {
-        "word": "shine",
-        "definition": "To give off light or be bright."
+        "word": "hat",
+        "definition": "Something you wear on your head."
       },
       {
-        "word": "laugh",
-        "definition": "Making sounds when something is funny."
+        "word": "ice",
+        "definition": "Frozen water that is very cold."
       },
       {
-        "word": "smart",
-        "definition": "Being quick to understand or solve things."
+        "word": "jump",
+        "definition": "To push off the ground with your legs."
       },
       {
-        "word": "peace",
-        "definition": "A quiet and calm state, without trouble."
+        "word": "kite",
+        "definition": "A toy that flies in the wind on a string."
       },
       {
-        "word": "green",
-        "definition": "A color like grass or leaves, often connected to nature."
+        "word": "lamp",
+        "definition": "An object that gives light in a room."
       },
       {
-        "word": "kind",
-        "definition": "Being friendly and caring to others."
+        "word": "moon",
+        "definition": "The round object in the sky at night."
       },
       {
-        "word": "light",
-        "definition": "What helps you see things; brightness."
+        "word": "nest",
+        "definition": "A home built by a bird for its eggs."
       },
       {
-        "word": "clear",
-        "definition": "Easy to understand or see."
+        "word": "ocean",
+        "definition": "A very large body of salt water."
       },
       {
-        "word": "young",
-        "definition": "Not very old; having lived for a short time."
+        "word": "pen",
+        "definition": "A tool used for writing with ink."
       },
       {
-        "word": "sweet",
-        "definition": "Tasting like sugar; very nice or kind."
+        "word": "queen",
+        "definition": "A female ruler of a country."
       },
       {
-        "word": "strong",
-        "definition": "Having lots of power or muscle."
+        "word": "rain",
+        "definition": "Water that falls from clouds in the sky."
       },
       {
-        "word": "lucky",
-        "definition": "Having good things happen by chance."
+        "word": "sun",
+        "definition": "The bright star that gives light to Earth."
       },
       {
-        "word": "honest",
-        "definition": "Always telling the truth."
+        "word": "tree",
+        "definition": "A tall plant with a trunk and branches."
       },
       {
-        "word": "loyal",
-        "definition": "Always supporting or standing by someone."
+        "word": "van",
+        "definition": "A large car used for carrying things."
       },
       {
-        "word": "smile",
-        "definition": "A happy expression with your mouth turned up."
+        "word": "water",
+        "definition": "A clear liquid we drink and use to wash."
       },
       {
-        "word": "brisk",
-        "definition": "Moving quickly and full of energy."
+        "word": "xray",
+        "definition": "A picture that shows inside your body."
       },
       {
-        "word": "polite",
-        "definition": "Being respectful and nice to others."
+        "word": "yoyo",
+        "definition": "A toy on a string that goes up and down."
+      },
+      {
+        "word": "zebra",
+        "definition": "An animal with black and white stripes."
+      },
+      {
+        "word": "ant",
+        "definition": "A small insect that lives in groups."
+      },
+      {
+        "word": "book",
+        "definition": "Pages with words and stories to read."
+      },
+      {
+        "word": "cake",
+        "definition": "A sweet food often eaten at birthdays."
+      },
+      {
+        "word": "desk",
+        "definition": "A table used for writing or studying."
+      },
+      {
+        "word": "ear",
+        "definition": "The body part used for hearing sounds."
+      },
+      {
+        "word": "frog",
+        "definition": "A small green animal that jumps and swims."
+      },
+      {
+        "word": "glue",
+        "definition": "A sticky substance used to join things."
+      },
+      {
+        "word": "hair",
+        "definition": "The stuff growing on your head."
+      },
+      {
+        "word": "ink",
+        "definition": "Colored liquid used in pens for writing."
+      },
+      {
+        "word": "jam",
+        "definition": "A sweet spread made from fruit."
+      },
+      {
+        "word": "key",
+        "definition": "A metal object used to open locks."
+      },
+      {
+        "word": "leaf",
+        "definition": "The green part of a plant or tree."
+      },
+      {
+        "word": "map",
+        "definition": "A drawing that shows where places are."
+      },
+      {
+        "word": "nose",
+        "definition": "The body part used for smelling."
+      },
+      {
+        "word": "owl",
+        "definition": "A bird with big eyes that hunts at night."
+      },
+      {
+        "word": "pet",
+        "definition": "An animal kept at home for company."
+      },
+      {
+        "word": "quilt",
+        "definition": "A warm cover made of cloth pieces."
+      },
+      {
+        "word": "rock",
+        "definition": "A hard substance that forms the Earth."
+      },
+      {
+        "word": "star",
+        "definition": "A bright point of light in the night sky."
+      },
+      {
+        "word": "toy",
+        "definition": "An object children play with for fun."
+      },
+      {
+        "word": "umbrella",
+        "definition": "A thing used to keep you dry in the rain."
+      },
+      {
+        "word": "violin",
+        "definition": "A musical instrument with strings."
+      },
+      {
+        "word": "wolf",
+        "definition": "A wild animal similar to a large dog."
+      },
+      {
+        "word": "bee",
+        "definition": "A flying insect that makes honey."
+      },
+      {
+        "word": "button",
+        "definition": "A small disc used to fasten clothes."
+      },
+      {
+        "word": "cloud",
+        "definition": "A white or gray shape in the sky."
+      },
+      {
+        "word": "dragon",
+        "definition": "A mythical fire-breathing creature."
+      },
+      {
+        "word": "elephant",
+        "definition": "A large gray animal with a long trunk."
+      },
+      {
+        "word": "finger",
+        "definition": "A part of your hand used for touching."
+      },
+      {
+        "word": "garden",
+        "definition": "An area where plants and flowers grow."
+      },
+      {
+        "word": "honey",
+        "definition": "A sweet, sticky food made by bees."
+      },
+      {
+        "word": "island",
+        "definition": "Land surrounded by water on all sides."
+      },
+      {
+        "word": "jungle",
+        "definition": "A forest with many trees and animals."
+      },
+      {
+        "word": "kangaroo",
+        "definition": "An animal that hops and has a pouch."
+      },
+      {
+        "word": "lemon",
+        "definition": "A sour, yellow fruit used in drinks."
+      },
+      {
+        "word": "monkey",
+        "definition": "An animal that climbs trees and has a tail."
+      },
+      {
+        "word": "needle",
+        "definition": "A thin tool used for sewing."
+      },
+      {
+        "word": "orange",
+        "definition": "A round, sweet fruit with a peel."
+      },
+      {
+        "word": "pencil",
+        "definition": "A writing tool made of wood and lead."
+      },
+      {
+        "word": "question",
+        "definition": "Something you ask to get information."
+      },
+      {
+        "word": "rainbow",
+        "definition": "An arch of colors in the sky after rain."
+      },
+      {
+        "word": "scissors",
+        "definition": "A tool used for cutting paper."
+      },
+      {
+        "word": "tooth",
+        "definition": "A hard white thing in your mouth for biting."
+      },
+      {
+        "word": "unicorn",
+        "definition": "A magical horse with a horn on its head."
+      },
+      {
+        "word": "volcano",
+        "definition": "A mountain that can erupt with lava."
+      },
+      {
+        "word": "window",
+        "definition": "A clear part of a wall to see through."
+      },
+      {
+        "word": "yarn",
+        "definition": "Long thread used for knitting."
+      },
+      {
+        "word": "zipper",
+        "definition": "A fastener with interlocking teeth."
+      },
+      {
+        "word": "art",
+        "definition": "Creative work like painting or drawing."
+      },
+      {
+        "word": "bridge",
+        "definition": "A structure built over water or roads."
+      },
+      {
+        "word": "candle",
+        "definition": "A stick of wax that burns to give light."
+      },
+      {
+        "word": "drum",
+        "definition": "A musical instrument you hit to play."
+      },
+      {
+        "word": "eye",
+        "definition": "The part of your face used for seeing."
+      },
+      {
+        "word": "fire",
+        "definition": "Hot, burning flames that give heat."
+      },
+      {
+        "word": "gift",
+        "definition": "Something given to someone as a present."
+      },
+      {
+        "word": "hill",
+        "definition": "An area of land higher than surroundings."
+      },
+      {
+        "word": "igloo",
+        "definition": "A dome-shaped house made of ice blocks."
+      },
+      {
+        "word": "jelly",
+        "definition": "A soft, wiggly food made from fruit juice."
+      },
+      {
+        "word": "king",
+        "definition": "A male ruler of a country."
+      },
+      {
+        "word": "ladder",
+        "definition": "A set of steps used to climb up or down."
+      },
+      {
+        "word": "music",
+        "definition": "Sounds combined to make songs or tunes."
+      },
+      {
+        "word": "night",
+        "definition": "The dark time when the sun is not out."
+      },
+      {
+        "word": "oven",
+        "definition": "A hot box used for cooking food."
+      },
+      {
+        "word": "pizza",
+        "definition": "A round, flat food with toppings."
+      },
+      {
+        "word": "quiet",
+        "definition": "Making very little or no noise."
+      },
+      {
+        "word": "robot",
+        "definition": "A machine that can move and do tasks."
+      },
+      {
+        "word": "shoe",
+        "definition": "Something you wear to protect your feet."
+      },
+      {
+        "word": "tiger",
+        "definition": "A large wild cat with orange and black stripes."
+      },
+      {
+        "word": "uniform",
+        "definition": "Special clothes worn by a group of people."
+      },
+      {
+        "word": "vest",
+        "definition": "A sleeveless piece of clothing."
+      },
+      {
+        "word": "whale",
+        "definition": "A very large animal that lives in the ocean."
+      },
+      {
+        "word": "box",
+        "definition": "A container with a lid for storing things."
+      },
+      {
+        "word": "yak",
+        "definition": "A large, hairy cow-like animal."
+      },
+      {
+        "word": "zoo",
+        "definition": "A place where wild animals are kept."
       }
     ],
     "normal": [
       {
+        "word": "algebra",
+        "definition": "A branch of math using letters and symbols."
+      },
+      {
+        "word": "biology",
+        "definition": "The study of living organisms."
+      },
+      {
+        "word": "climate",
+        "definition": "Long-term weather patterns in an area."
+      },
+      {
         "word": "debate",
-        "definition": "A formal discussion on a particular topic, where opposing arguments are put forward."
+        "definition": "A formal discussion of opposing viewpoints."
       },
       {
-        "word": "grace",
-        "definition": "Simple elegance or refinement of movement."
+        "word": "economy",
+        "definition": "The system of money and trade in a country."
       },
       {
-        "word": "humble",
-        "definition": "Having or showing a modest or low estimate of one's importance."
+        "word": "fiction",
+        "definition": "Literature based on imagination, not fact."
       },
       {
-        "word": "glisten",
-        "definition": "To shine with a sparkling light."
+        "word": "geometry",
+        "definition": "The math of shapes, sizes, and positions."
       },
       {
-        "word": "ponder",
-        "definition": "To think about something carefully, especially before making a decision."
+        "word": "history",
+        "definition": "The study of past events and civilizations."
       },
       {
-        "word": "vivid",
-        "definition": "Producing powerful feelings or strong, clear images in the mind."
+        "word": "internet",
+        "definition": "A global network of connected computers."
       },
       {
-        "word": "revere",
-        "definition": "To feel deep respect or admiration for something."
+        "word": "justice",
+        "definition": "Fair treatment and behavior in society."
       },
       {
-        "word": "fragile",
-        "definition": "Easily broken or damaged."
+        "word": "kinetic",
+        "definition": "Related to motion and movement of objects."
       },
       {
-        "word": "steady",
-        "definition": "Firmly fixed, constant, regular, or balanced."
+        "word": "literary",
+        "definition": "Related to literature and written works."
       },
       {
-        "word": "desire",
-        "definition": "A strong feeling of wanting to have something or wishing for something to happen."
+        "word": "metaphor",
+        "definition": "A figure of speech comparing unlike things."
+      },
+      {
+        "word": "neuron",
+        "definition": "A cell that transmits nerve impulses."
+      },
+      {
+        "word": "organic",
+        "definition": "Produced without artificial chemicals."
+      },
+      {
+        "word": "physics",
+        "definition": "The science of matter, energy, and motion."
+      },
+      {
+        "word": "quantum",
+        "definition": "Related to the behavior of atomic particles."
+      },
+      {
+        "word": "rhetoric",
+        "definition": "The art of effective speaking and writing."
+      },
+      {
+        "word": "society",
+        "definition": "People living together in a community."
+      },
+      {
+        "word": "theorem",
+        "definition": "A statement proven by logical reasoning."
+      },
+      {
+        "word": "utopia",
+        "definition": "An imagined perfect place or society."
+      },
+      {
+        "word": "variable",
+        "definition": "A quantity that can change or vary."
+      },
+      {
+        "word": "warrant",
+        "definition": "Justification for a belief or action."
+      },
+      {
+        "word": "xenon",
+        "definition": "A noble gas used in some lights."
+      },
+      {
+        "word": "yield",
+        "definition": "To give way or produce a result."
+      },
+      {
+        "word": "zygote",
+        "definition": "A fertilized egg cell."
+      },
+      {
+        "word": "atom",
+        "definition": "The basic unit of a chemical element."
+      },
+      {
+        "word": "biome",
+        "definition": "A large naturally occurring community of flora and fauna."
+      },
+      {
+        "word": "census",
+        "definition": "An official count of a population."
+      },
+      {
+        "word": "data",
+        "definition": "Facts and statistics collected for analysis."
+      },
+      {
+        "word": "ecology",
+        "definition": "The study of organisms and their environment."
+      },
+      {
+        "word": "freedom",
+        "definition": "The power to act or speak without restraint."
+      },
+      {
+        "word": "gene",
+        "definition": "A unit of heredity in living organisms."
+      },
+      {
+        "word": "hormone",
+        "definition": "A regulatory substance produced in an organism."
+      },
+      {
+        "word": "isotope",
+        "definition": "Atoms with the same atomic number but different mass numbers."
+      },
+      {
+        "word": "jargon",
+        "definition": "Special words used by a profession or group."
+      },
+      {
+        "word": "karma",
+        "definition": "The sum of a person's actions in this and previous states of existence."
+      },
+      {
+        "word": "logic",
+        "definition": "Reasoning conducted according to strict principles."
+      },
+      {
+        "word": "meiosis",
+        "definition": "Cell division that produces reproductive cells."
+      },
+      {
+        "word": "nucleus",
+        "definition": "The central part of an atom or cell."
+      },
+      {
+        "word": "osmosis",
+        "definition": "Movement of a solvent through a semipermeable membrane."
+      },
+      {
+        "word": "paradigm",
+        "definition": "A typical example or pattern of something."
+      },
+      {
+        "word": "quorum",
+        "definition": "The minimum number of members needed to conduct business."
+      },
+      {
+        "word": "ratio",
+        "definition": "The quantitative relation between two amounts."
+      },
+      {
+        "word": "stimuli",
+        "definition": "Things that evoke a specific functional reaction."
+      },
+      {
+        "word": "theory",
+        "definition": "A supposition or system of ideas explaining something."
+      },
+      {
+        "word": "urban",
+        "definition": "Relating to or characteristic of a city."
+      },
+      {
+        "word": "vector",
+        "definition": "A quantity having direction as well as magnitude."
+      },
+      {
+        "word": "wiki",
+        "definition": "A website that allows collaborative editing of content."
+      },
+      {
+        "word": "allele",
+        "definition": "One of two or more forms of a gene."
+      },
+      {
+        "word": "bias",
+        "definition": "Prejudice in favor of or against something."
+      },
+      {
+        "word": "catalyst",
+        "definition": "A substance that increases the rate of a chemical reaction."
+      },
+      {
+        "word": "democracy",
+        "definition": "A system of government by the whole population."
+      },
+      {
+        "word": "enzyme",
+        "definition": "A protein that acts as a biological catalyst."
+      },
+      {
+        "word": "fractal",
+        "definition": "A never-ending pattern that repeats itself at different scales."
+      },
+      {
+        "word": "genome",
+        "definition": "The complete set of genes in an organism."
+      },
+      {
+        "word": "hypothesis",
+        "definition": "A proposed explanation for a phenomenon."
+      },
+      {
+        "word": "ion",
+        "definition": "An atom or molecule with a net electric charge."
+      },
+      {
+        "word": "joule",
+        "definition": "The unit of energy in the International System of Units."
+      },
+      {
+        "word": "kelvin",
+        "definition": "The base unit of temperature in the International System."
+      },
+      {
+        "word": "laser",
+        "definition": "A device that emits a narrow beam of coherent light."
+      },
+      {
+        "word": "mitosis",
+        "definition": "Cell division resulting in two identical daughter cells."
+      },
+      {
+        "word": "neutron",
+        "definition": "A subatomic particle with no net electric charge."
+      },
+      {
+        "word": "oxidation",
+        "definition": "The loss of electrons during a reaction by a molecule or atom."
+      },
+      {
+        "word": "photon",
+        "definition": "A particle representing a quantum of light or other electromagnetic radiation."
+      },
+      {
+        "word": "quark",
+        "definition": "A type of elementary particle and a fundamental constituent of matter."
+      },
+      {
+        "word": "relativity",
+        "definition": "Einstein's theory about space, time, and gravitation."
+      },
+      {
+        "word": "symbiosis",
+        "definition": "A close relationship between different species."
+      },
+      {
+        "word": "tectonic",
+        "definition": "Relating to the structure of the Earth's crust."
+      },
+      {
+        "word": "vaccine",
+        "definition": "A substance used to stimulate the production of antibodies."
+      },
+      {
+        "word": "watt",
+        "definition": "The SI unit of power, equivalent to one joule per second."
+      },
+      {
+        "word": "xenophobia",
+        "definition": "Dislike of or prejudice against people from other countries."
+      },
+      {
+        "word": "acid",
+        "definition": "A chemical substance that neutralizes alkalis."
+      },
+      {
+        "word": "base",
+        "definition": "A chemical compound that neutralizes acids."
+      },
+      {
+        "word": "carbon",
+        "definition": "A chemical element fundamental to all known life."
+      },
+      {
+        "word": "dna",
+        "definition": "A molecule carrying genetic instructions for development."
+      },
+      {
+        "word": "ethic",
+        "definition": "Moral principles that govern a person's behavior."
+      },
+      {
+        "word": "fusion",
+        "definition": "The process of joining atomic nuclei to form heavier nuclei."
+      },
+      {
+        "word": "gravity",
+        "definition": "The force that attracts objects toward the center of the Earth."
+      },
+      {
+        "word": "habitat",
+        "definition": "The natural home or environment of an animal or plant."
+      },
+      {
+        "word": "inertia",
+        "definition": "A property of matter by which it remains at rest or in motion."
+      },
+      {
+        "word": "jupiter",
+        "definition": "The largest planet in our solar system."
+      },
+      {
+        "word": "kinesis",
+        "definition": "A movement or activity of a cell or organism."
+      },
+      {
+        "word": "light",
+        "definition": "Electromagnetic radiation that is visible to the human eye."
+      },
+      {
+        "word": "mole",
+        "definition": "The SI unit for amount of substance."
+      },
+      {
+        "word": "newton",
+        "definition": "The SI unit of force."
+      },
+      {
+        "word": "orbit",
+        "definition": "The curved path of an object around a star or planet."
+      },
+      {
+        "word": "prism",
+        "definition": "A transparent object that refracts light."
+      },
+      {
+        "word": "quasar",
+        "definition": "An extremely luminous active galactic nucleus."
+      },
+      {
+        "word": "RNA",
+        "definition": "A nucleic acid present in all living cells."
+      },
+      {
+        "word": "sine",
+        "definition": "A trigonometric function of an angle."
+      },
+      {
+        "word": "torque",
+        "definition": "A twisting force that causes rotation."
+      },
+      {
+        "word": "uranium",
+        "definition": "A radioactive element used as nuclear fuel."
+      },
+      {
+        "word": "volt",
+        "definition": "The SI unit of electromotive force."
+      },
+      {
+        "word": "wave",
+        "definition": "A disturbance that transfers energy through matter or space."
+      },
+      {
+        "word": "x-ray",
+        "definition": "Electromagnetic radiation of high energy and short wavelength."
+      },
+      {
+        "word": "yeast",
+        "definition": "A microscopic fungus used in baking and brewing."
+      },
+      {
+        "word": "zinc",
+        "definition": "A bluish-white metallic element."
+      },
+      {
+        "word": "cosmos",
+        "definition": "The universe seen as a well-ordered whole."
       }
     ],
     "hard": [
       {
-        "word": "ephemeral",
-        "definition": "Lasting for a very short time."
+        "word": "anomaly",
+        "definition": "Something that deviates from what is standard, normal, or expected."
+      },
+      {
+        "word": "bureaucracy",
+        "definition": "A system of government with many complicated rules and processes."
+      },
+      {
+        "word": "cognitive",
+        "definition": "Related to the mental processes of perception, memory, judgment, and reasoning."
+      },
+      {
+        "word": "dichotomy",
+        "definition": "A division or contrast between two things that are represented as being opposed or entirely different."
+      },
+      {
+        "word": "empirical",
+        "definition": "Based on, concerned with, or verifiable by observation or experience rather than theory or pure logic."
+      },
+      {
+        "word": "fallacy",
+        "definition": "A mistaken belief, especially one based on unsound argument."
+      },
+      {
+        "word": "geopolitical",
+        "definition": "Relating to politics, especially international relations, as influenced by geographical factors."
+      },
+      {
+        "word": "hegemony",
+        "definition": "Leadership or dominance, especially by one country or social group over others."
+      },
+      {
+        "word": "ideology",
+        "definition": "A system of ideas and ideals, especially one which forms the basis of economic or political theory and policy."
+      },
+      {
+        "word": "jurisprudence",
+        "definition": "The theory or philosophy of law."
+      },
+      {
+        "word": "kinesthetic",
+        "definition": "Relating to a person's awareness of the position and movement of the parts of the body."
+      },
+      {
+        "word": "lexicon",
+        "definition": "The vocabulary of a person, language, or branch of knowledge."
+      },
+      {
+        "word": "metacognition",
+        "definition": "Awareness and understanding of one's own thought processes."
+      },
+      {
+        "word": "neologism",
+        "definition": "A new word or expression, or a new meaning for an existing word."
+      },
+      {
+        "word": "oligarchy",
+        "definition": "A small group of people having control of a country, organization, or institution."
+      },
+      {
+        "word": "paradigm",
+        "definition": "A typical example or pattern of something; a model."
       },
       {
         "word": "quintessential",
         "definition": "Representing the most perfect or typical example of a quality or class."
       },
       {
-        "word": "cogent",
-        "definition": "Clear, logical, and convincing."
+        "word": "rhetoric",
+        "definition": "The art of effective or persuasive speaking or writing, especially the use of figures of speech and other compositional techniques."
       },
       {
-        "word": "recalcitrant",
-        "definition": "Having an obstinately uncooperative attitude toward authority or discipline."
+        "word": "sycophant",
+        "definition": "A person who acts obsequiously toward someone important in order to gain advantage."
       },
       {
-        "word": "insidious",
-        "definition": "Proceeding in a gradual, subtle way, but with harmful effects."
+        "word": "tautology",
+        "definition": "The saying of the same thing twice in different words, generally considered to be a fault of style."
       },
       {
-        "word": "equanimity",
-        "definition": "Mental calmness, composure, and evenness of temper, especially in a difficult situation."
+        "word": "ubiquitous",
+        "definition": "Present, appearing, or found everywhere."
       },
       {
-        "word": "obfuscate",
-        "definition": "To deliberately make something unclear or difficult to understand."
+        "word": "vehement",
+        "definition": "Showing strong feeling; forceful, passionate, or intense."
       },
       {
-        "word": "tenacious",
-        "definition": "Tending to keep a firm hold of something; persistent or determined."
+        "word": "weltanschauung",
+        "definition": "A particular philosophy or view of life; the worldview of an individual or group."
       },
       {
-        "word": "obsequious",
-        "definition": "Excessively eager to please or obey."
+        "word": "xenophobia",
+        "definition": "Dislike of or prejudice against people from other countries."
       },
       {
-        "word": "pernicious",
-        "definition": "Having a harmful effect, especially in a gradual or subtle way."
+        "word": "yoke",
+        "definition": "A wooden crosspiece that is fastened over the necks of two animals and attached to the plow or cart that they are to pull."
+      },
+      {
+        "word": "zeitgeist",
+        "definition": "The defining spirit or mood of a particular period of history as shown by the ideas and beliefs of the time."
+      },
+      {
+        "word": "algorithmic",
+        "definition": "Relating to or using a process or set of rules to be followed in calculations or problem-solving."
+      },
+      {
+        "word": "blockchain",
+        "definition": "A system in which a record of transactions made in bitcoin or another cryptocurrency are maintained across several computers."
+      },
+      {
+        "word": "cryptocurrency",
+        "definition": "A digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds."
+      },
+      {
+        "word": "demagogue",
+        "definition": "A political leader who seeks support by appealing to the desires and prejudices of ordinary people rather than by using rational argument."
+      },
+      {
+        "word": "epistemology",
+        "definition": "The theory of knowledge, especially with regard to its methods, validity, and scope."
+      },
+      {
+        "word": "fiduciary",
+        "definition": "Involving trust, especially with regard to the relationship between a trustee and a beneficiary."
+      },
+      {
+        "word": "gerrymandering",
+        "definition": "The practice of manipulating the boundaries of an electoral constituency to favor one party or class."
+      },
+      {
+        "word": "homogeneous",
+        "definition": "Of the same kind; alike; composed of parts all of the same kind."
+      },
+      {
+        "word": "indemnity",
+        "definition": "Security against or exemption from legal liability for one's actions."
+      },
+      {
+        "word": "juxtaposition",
+        "definition": "The fact of two things being seen or placed close together with contrasting effect."
+      },
+      {
+        "word": "kleptocracy",
+        "definition": "A government with corrupt leaders that use their power to exploit the people and natural resources of their own territory."
+      },
+      {
+        "word": "litigious",
+        "definition": "Unreasonably prone to go to law to settle disputes."
+      },
+      {
+        "word": "mnemonic",
+        "definition": "A system such as a pattern of letters, ideas, or associations which assists in remembering something."
+      },
+      {
+        "word": "nepotism",
+        "definition": "The practice among those with power or influence of favoring relatives or friends, especially by giving them jobs."
+      },
+      {
+        "word": "ontology",
+        "definition": "The branch of metaphysics dealing with the nature of being."
+      },
+      {
+        "word": "pedagogy",
+        "definition": "The method and practice of teaching, especially as an academic subject or theoretical concept."
+      },
+      {
+        "word": "quid pro quo",
+        "definition": "A favor or advantage granted or expected in return for something."
+      },
+      {
+        "word": "realpolitik",
+        "definition": "A system of politics or principles based on practical rather than moral or ideological considerations."
+      },
+      {
+        "word": "solipsism",
+        "definition": "The view or theory that the self is all that can be known to exist."
+      },
+      {
+        "word": "taxonomy",
+        "definition": "The branch of science concerned with classification, especially of organisms."
+      },
+      {
+        "word": "usufruct",
+        "definition": "The right to enjoy the use and advantages of another's property short of the destruction or waste of its substance."
+      },
+      {
+        "word": "verisimilitude",
+        "definition": "The appearance of being true or real."
+      },
+      {
+        "word": "Weltschmerz",
+        "definition": "A feeling of melancholy and worldweariness."
       }
     ]
   }
