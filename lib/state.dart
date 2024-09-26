@@ -2,15 +2,45 @@ import 'package:beatbrows/music.dart';
 import 'package:beatbrows/operation_io.dart';
 import 'package:beatbrows/word.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
+
+import 'package:rxdart/subjects.dart';
+
+class LiveTimestamp {
+  final BehaviorSubject<int> _subject = BehaviorSubject<int>();
+  Stream<int> get timestampStream => _subject.stream;
+  Timer? _timer;
+
+  LiveTimestamp() {
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (!_subject.isClosed) {
+        _subject.add(DateTime.now().millisecondsSinceEpoch);
+      }
+    });
+  }
+
+  void dispose() {
+    _timer?.cancel();
+    _subject.close();
+  }
+}
 
 class AppState extends ChangeNotifier {
-
   void switchMusic() {
     audioController.switchState();
     notifyListeners();
   }
 
-  void refreshState() {
+  Future<void> refreshState() async {
+    audioController.dispose();
+    await ioController.resetData();
+    await ioController.initialize();
+    await audioController.initialize();
+    await wordController.initialize();
     notifyListeners();
   }
 
