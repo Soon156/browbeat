@@ -78,6 +78,8 @@ const availableList = <String>{
   'progression',
   'userWordList',
   'wordIndex',
+  'hintCounter',
+  'lastHintTimeStamp',
 };
 
 final ioController = IOController();
