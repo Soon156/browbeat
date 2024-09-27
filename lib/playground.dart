@@ -385,7 +385,9 @@ class _PlayGroundState extends State<PlayGround> {
         body: LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth <= 350) {
-              return Center(child: Text("Please rotate your phone for better experience!"));
+              return Center(
+                  child:
+                      Text("Please rotate your phone for better experience!"));
             } else {
               return mainPage;
             }
