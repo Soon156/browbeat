@@ -9,9 +9,11 @@ class WordController {
   late Map<String, dynamic> progressionWordList;
   late String defaultWordList;
   late String difficulty;
-  late int wordIndex;
+  late String wordIndex;
   late int wordCounter;
   late int wordCounterAll;
+  late int hintCounter;
+  late int lastHintTimeStamp;
 
   Future<void> initialize() async {
     wordLog.info("Initialize Word Controller....");
@@ -23,7 +25,13 @@ class WordController {
     wordLog.config('Difficulty : $difficulty');
 
     // Retrieve last state of game
-    wordIndex = (await ioController.readData('wordIndex', 'int') as int?) ?? -1;
+    wordIndex =
+        (await ioController.readData('wordIndex', 'string') as String?) ?? "{}";
+    hintCounter =
+        (await ioController.readData('hintCounter', 'int') as int?) ?? 3;
+    lastHintTimeStamp =
+        (await ioController.readData('lastHintTimeStamp', 'int') as int?) ??
+            DateTime.now().millisecondsSinceEpoch;
     var tempWord =
         (await ioController.readData('progression', 'string') as String?) ?? '';
 
@@ -83,9 +91,13 @@ class WordController {
       var wordArray = jsonDecode(wordList)[difficulty];
       if (wordArray.isNotEmpty) {
         // Assign hint
-        wordIndex = random.nextInt(wordArray.length);
-        ioController.writeData('wordIndex', 'int', wordIndex);
-        var wordToHint = wordArray[wordIndex]["word"];
+        var wordPointer = random.nextInt(wordArray.length);
+        var newWordIndex = jsonDecode(wordIndex);
+        newWordIndex[difficulty] = wordPointer;
+        wordIndex = jsonEncode(newWordIndex);
+        ioController.writeData('wordIndex', 'string', wordIndex);
+
+        var wordToHint = wordArray[wordPointer]["word"];
 
         if (wordToHint.isNotEmpty) {
           List<String> charArray = wordToHint.split('');
@@ -106,7 +118,7 @@ class WordController {
 
           // Assign description
           progressionWordList[difficulty]!['description'] =
-              wordArray[wordIndex]["definition"] ?? "";
+              wordArray[wordPointer]["definition"] ?? "";
         }
       } else {
         wordLog.warning("Difficulty beat/wrong word file!");
@@ -124,10 +136,11 @@ class WordController {
 
   void removeWord() {
     var wordArray = jsonDecode(wordList);
+    var wordPointer = jsonDecode(wordIndex);
     if (wordArray[difficulty].isNotEmpty) {
       var newWordArray = wordArray[difficulty] as List;
-      if (wordIndex >= 0 && wordIndex < newWordArray.length) {
-        newWordArray.removeAt(wordIndex);
+      if (newWordArray.isNotEmpty) {
+        newWordArray.removeAt(wordPointer[difficulty]);
         wordArray[difficulty] = newWordArray;
         wordList = jsonEncode(wordArray);
         ioController.writeData('userWordList', 'string', wordList);
@@ -180,7 +193,6 @@ String generateCharacterList(List hintWord, List originalWord) {
       hintChars.add(randomChar);
     }
   }
-
 
   return shuffleArray(hintChars).join();
 }
