@@ -1,6 +1,6 @@
-import 'package:beatbrows/music.dart';
-import 'package:beatbrows/operation_io.dart';
-import 'package:beatbrows/word.dart';
+import 'package:browbeat/music.dart';
+import 'package:browbeat/operation_io.dart';
+import 'package:browbeat/word.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 

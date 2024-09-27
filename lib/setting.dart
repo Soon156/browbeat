@@ -1,6 +1,6 @@
-import 'package:beatbrows/music.dart';
-import 'package:beatbrows/operation_io.dart';
-import 'package:beatbrows/state.dart';
+import 'package:browbeat/music.dart';
+import 'package:browbeat/operation_io.dart';
+import 'package:browbeat/state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +20,7 @@ class _SettingPageState extends State<SettingPage> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text("BeatBrows"),
+        title: Text("Browbeat"),
       ),
       body: SafeArea(
         child: Container(
@@ -63,7 +63,6 @@ class _SettingPageState extends State<SettingPage> {
                               },
                               onChangeEnd: (double value) {
                                 audioController.setMusicVolume();
-
                                 ioController.writeData(
                                     'musicVolume', 'double', value);
                               },

@@ -1,8 +1,8 @@
-import 'package:beatbrows/music.dart';
-import 'package:beatbrows/operation_io.dart';
-import 'package:beatbrows/setting.dart';
-import 'package:beatbrows/state.dart';
-import 'package:beatbrows/word.dart';
+import 'package:browbeat/music.dart';
+import 'package:browbeat/operation_io.dart';
+import 'package:browbeat/setting.dart';
+import 'package:browbeat/state.dart';
+import 'package:browbeat/word.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
@@ -77,7 +77,7 @@ class MainMenu extends StatelessWidget {
     var appState = context.watch<AppState>();
     return Scaffold(
       appBar: AppBar(
-        title: Text("BeatBrows"),
+        title: Text("Browbeat"),
         actions: [
           IconButton(
               onPressed: () => appState.switchMusic(),
