@@ -79,3 +79,6 @@ class WordState {
 
   WordState(this.character, this.hintIndex, this.inputIndex);
 }
+
+const int hintInterval = 3; // minutes
+const int minWidth = 350;
