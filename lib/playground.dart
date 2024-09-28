@@ -222,9 +222,13 @@ class _PlayGroundState extends State<PlayGround> {
                             if (hintDetail.isNotEmpty) {
                               clickable = false;
                               if (wordController.hintCounter > 0) {
+                                var now = DateTime.now().millisecondsSinceEpoch;
                                 wordController.hintCounter -= 1;
+                                wordController.lastHintTimeStamp = now;
                                 ioController.writeData('hintCounter', 'int',
                                     wordController.hintCounter);
+                                ioController.writeData(
+                                    'lastHintTimeStamp', 'int', now);
                                 var hintChar = hintDetail["hintChar"]!;
                                 var randomIndex =
                                     int.parse(hintDetail["randomIndex"]!);
@@ -251,13 +255,13 @@ class _PlayGroundState extends State<PlayGround> {
                                                       'No data available');
                                                 } else {
                                                   var now = setState.data!;
-                                                  var remainingTime =
-                                                      ((wordController.lastHintTimeStamp +
-                                                                  (1000 *
-                                                                      60 *
-                                                                      3)) -
-                                                              now) /
-                                                          1000;
+                                                  var remainingTime = ((wordController
+                                                                  .lastHintTimeStamp +
+                                                              (1000 *
+                                                                  60 *
+                                                                  hintInterval)) -
+                                                          now) /
+                                                      1000;
                                                   return Text(
                                                       "Next hint will be refresh in: ${remainingTime.round()} sec");
                                                 }
@@ -282,18 +286,19 @@ class _PlayGroundState extends State<PlayGround> {
                         builder: (context, snapshot) {
                           var now = snapshot.data!;
                           var difference =
-                              now - wordController.lastHintTimeStamp;
-                          if (difference / 1000 / 60 > 3 &&
-                              wordController.hintCounter < 3) {
-                            wordController.lastHintTimeStamp = now;
-                            wordController.hintCounter += 1;
-                            ioController.writeData('hintCounter', 'int',
-                                wordController.hintCounter);
-                            ioController.writeData(
-                                'lastHintTimeStamp', 'int', now);
+                              (now - wordController.lastHintTimeStamp) / 1000;
+                          if (difference > hintInterval * 60) {
+                            if (wordController.hintCounter < hintInterval) {
+                              wordController.hintCounter += 1;
+                              wordController.lastHintTimeStamp = now;
+                              ioController.writeData(
+                                  'lastHintTimeStamp', 'int', now);
+                              ioController.writeData('hintCounter', 'int',
+                                  wordController.hintCounter);
+                            }
                           }
                           return Text(
-                              "${wordController.hintCounter.toString()}/3");
+                              "${wordController.hintCounter.toString()}/$hintInterval");
                         })
                   ],
                 ),
@@ -343,11 +348,11 @@ class _PlayGroundState extends State<PlayGround> {
                         showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
-                                  title: const Text('Incorrect'),
+                                  title: Center(child: Text('Incorrect')),
                                   actions: <Widget>[
                                     TextButton(
                                       onPressed: () => Navigator.pop(context),
-                                      child: const Text('Retry'),
+                                      child: Text('Retry'),
                                     ),
                                   ],
                                 ));
@@ -384,7 +389,7 @@ class _PlayGroundState extends State<PlayGround> {
         ),
         body: LayoutBuilder(
           builder: (context, constraints) {
-            if (constraints.maxWidth <= 350) {
+            if (constraints.maxWidth <= minWidth) {
               return Center(
                   child:
                       Text("Please rotate your phone for better experience!"));
