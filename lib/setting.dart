@@ -2,7 +2,7 @@ import 'package:browbeat/music.dart';
 import 'package:browbeat/operation_io.dart';
 import 'package:browbeat/state.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 class SettingPage extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<AppState>();
+    // var appState = context.watch<AppState>();
     final theme = Theme.of(context);
     final style = theme.textTheme.displayMedium!.copyWith(
       color: theme.colorScheme.secondary,
@@ -105,6 +105,7 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                     ],
                   )),
+              /*
               ElevatedButton(
                   onPressed: () => showDialog<String>(
                         context: context,
@@ -133,6 +134,7 @@ class _SettingPageState extends State<SettingPage> {
                   child: Text(
                     "Reset",
                   ))
+                  */
             ],
           ),
         ),
