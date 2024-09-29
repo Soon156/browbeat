@@ -81,4 +81,5 @@ class WordState {
 }
 
 const int hintInterval = 3; // minutes
+const int hintMax = 3;
 const int minWidth = 350;
