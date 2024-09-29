@@ -70,20 +70,21 @@ class _PlayGroundState extends State<PlayGround> {
     );
 
     List<Widget> inputCard = [];
-    Color? cardColor;
+    List<Color?> colorList = [];
     for (int i = 0; i < newData.length; i++) {
+      colorList.add(appColorScheme.getColorSheme("third"));
       if (inputData.length < newData.length) {
         inputData.add(WordState(newData[i], "", ""));
       }
       if (inputData[i].character == "_") {
-        cardColor = appColorScheme.getColorSheme("third");
-      } else {
-        cardColor = appColorScheme.getColorSheme("fourth");
+        print("second: ${inputData[i].character}");
+        colorList[i] = appColorScheme.getColorSheme("fourth");
       }
+
       inputCard.add(DragTarget(
         builder: (context, candidateItems, rejectedItems) {
           return Card(
-            color: cardColor,
+            color: colorList[i],
             clipBehavior: Clip.hardEdge,
             child: InkWell(
               onTap: () {
@@ -133,7 +134,7 @@ class _PlayGroundState extends State<PlayGround> {
       if (inputIndex.contains(i)) {
         cardColor = appColorScheme.getColorSheme("unselected");
       } else {
-        cardColor = appColorScheme.getColorSheme("third");
+        cardColor = appColorScheme.getColorSheme("fourth");
       }
       if (selectedHint.length < hintWord.length) {
         selectedHint.add(null);
