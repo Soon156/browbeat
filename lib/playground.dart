@@ -288,8 +288,10 @@ class _PlayGroundState extends State<PlayGround> {
                           var difference =
                               (now - wordController.lastHintTimeStamp) / 1000;
                           if (difference > hintInterval * 60) {
-                            if (wordController.hintCounter < hintInterval) {
-                              wordController.hintCounter += 1;
+                            // seconds
+                            if (wordController.hintCounter < hintMax) {
+                              wordController.hintCounter +=
+                                  hintMax - wordController.hintCounter;
                               wordController.lastHintTimeStamp = now;
                               ioController.writeData(
                                   'lastHintTimeStamp', 'int', now);
