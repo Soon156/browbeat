@@ -22,6 +22,7 @@ class _PlayGroundState extends State<PlayGround> {
   List<Color?> selectedHint = [];
   List newData = [];
   List hintWord = [];
+  List<Color?> colorList = [];
 
   @override
   void initState() {
@@ -70,15 +71,13 @@ class _PlayGroundState extends State<PlayGround> {
     );
 
     List<Widget> inputCard = [];
-    List<Color?> colorList = [];
     for (int i = 0; i < newData.length; i++) {
-      colorList.add(appColorScheme.getColorSheme("third"));
+      colorList.add(appColorScheme.getColorSheme("fourth"));
       if (inputData.length < newData.length) {
         inputData.add(WordState(newData[i], "", ""));
       }
       if (inputData[i].character == "_") {
-        print("second: ${inputData[i].character}");
-        colorList[i] = appColorScheme.getColorSheme("fourth");
+        colorList[i] = appColorScheme.getColorSheme("third");
       }
 
       inputCard.add(DragTarget(
@@ -346,7 +345,6 @@ class _PlayGroundState extends State<PlayGround> {
 
                       // Build response
                       if (correctness == "error") {
-                        print(inputText.join(''));
                         // Show Dialog
                         showDialog<String>(
                             context: context,
@@ -368,6 +366,7 @@ class _PlayGroundState extends State<PlayGround> {
                           inputIndex = [];
                           hintIndex = [];
                           selectedHint = [];
+                          colorList = [];
                         });
                       }
                     },
